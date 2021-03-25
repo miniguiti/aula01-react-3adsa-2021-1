@@ -12,48 +12,20 @@
 // subtitulo.innerHTML = "Esse texto também!"
 // container.appendChild(subtitulo);
 
-
-
 //_____________________________
 //E com react ?
 var container = document.getElementById("app");
 
-function Contador(props){
-
-    const [numero, setNumero] = React.useState(0);
-
-    function somar(){
-        setNumero(numero + 1);
-    }
-
-    function subtrair(){
-        setNumero(numero - 1);
-    }
-
-      return(
+function App(props) {
+    return (
         <React.Fragment>
-            <h1>{props.titulo}</h1>
-            <h2>{numero}</h2>
-            <button onClick={somar}>+</button>
-            <button onClick={subtrair}>-</button>
+            <h2>{props.titulo}</h2>
         </React.Fragment>
     );
 }
 
-function App(){
-    return(
-        <React.Fragment>
-            <h1>Vote no seu preferido</h1>
-            <Contador titulo="React"/> 
-            <Contador titulo="Angular"/>
-            <Contador titulo="Vue"/>  
-        </React.Fragment>
-        
-    );
-}
-
-ReactDOM.render(React.createElement(App,null,null), container);
+ReactDOM.render(React.createElement(App, {titulo:"Esse titulo veio de uma prop :o"}, null), container);
 
 //Componentes seguem o padrão PascalCase
-//Só posso retornar um elemento jsx por componente
+//Só posso retornar um elemento jsx por componente (por isso React.Fragment)
 //Componentes podem receber propriedades
